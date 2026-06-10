@@ -84,3 +84,6 @@ student_id,roll_no,student_name,department,cgpa,company_name,package_lpa,placeme
 78,23CS078,Abhinav,CSE,8.8,TCS,4.5,Placed,2025,123
 79,23EC079,Manasa,ECE,7.8,None,0,Not Placed,2025,123
 80,23AD080,Niharika,AIDS,9.2,Amazon,10.0,Placed,2025,123
+81,23CST037,Nara,CST,9.0,Infosys,5.6,Placed,2025,123
+82,23CST014,Bindu,CST,9.0,Infosys,5.6,Placed,2025,123
+83,23CST014,Mythri,CST,9.0,Infosys,5.6,Placed,2025,123
