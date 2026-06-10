@@ -1,0 +1,6 @@
+student_id,student_name,department,cgpa,company_name,package_lpa,placement_status,placement_year
+1,Mythri,CSE,8.9,TCS,4.5,Placed,2025
+2,Viha,ECE,8.5,Infosys,5.2,Placed,2025
+3,Vinni,AIDS,9.1,Accenture,6.5,Placed,2025
+4,Rahul,CSE,7.8,Wipro,3.8,Placed,2025
+5,Anjali,IT,8.7,Capgemini,4.2,Placed,2025
