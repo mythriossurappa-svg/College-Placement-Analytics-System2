@@ -5,7 +5,7 @@ import plotly.express as px
 st.set_page_config(page_title="College Placement Analytics", layout="wide")
 
 try:
-    df = pd.read_csv("data/placements.csv")
+    df = pd.read_csv("placements.csv")
 except Exception:
     st.error("Could not load data/placements.csv")
     st.stop()
