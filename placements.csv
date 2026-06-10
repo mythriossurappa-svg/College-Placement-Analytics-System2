@@ -1,6 +1,86 @@
-student_id,student_name,department,cgpa,company_name,package_lpa,placement_status,placement_year
-1,Mythri,CSE,8.9,TCS,4.5,Placed,2025
-2,Viha,ECE,8.5,Infosys,5.2,Placed,2025
-3,Vinni,AIDS,9.1,Accenture,6.5,Placed,2025
-4,Rahul,CSE,7.8,Wipro,3.8,Placed,2025
-5,Anjali,IT,8.7,Capgemini,4.2,Placed,2025
+student_id,roll_no,student_name,department,cgpa,company_name,package_lpa,placement_status,placement_year,password
+1,23CS001,Mythri,CSE,8.9,TCS,4.5,Placed,2025,123
+2,23CS002,Viha,ECE,8.5,Infosys,5.2,Placed,2025,123
+3,23CS003,Vinni,AIDS,9.1,Accenture,6.5,Placed,2025,123
+4,23CS004,Rahul,CSE,7.8,Wipro,3.8,Placed,2025,123
+5,23CS005,Anjali,IT,8.7,Capgemini,4.2,Placed,2025,123
+6,23CS006,Myri,CSE,8.8,CTS,5.5,Placed,2025,123
+7,23CS007,ViJay,ECE,8.5,Infosys,5.2,Placed,2025,123
+8,23CS008,Vinela,AIDS,9.2,Accenture,6.5,Placed,2025,123
+9,23CS009,Raj,CSE,7.8,Wipro,3.8,Placed,2025,123
+10,23CS010,Ajay,IT,8.7,Capgemini,4.2,Placed,2025,123
+6,23CS006,Kiran,CSE,9.0,TCS,7.0,Placed,2025,123
+7,23CS007,Priya,ECE,8.6,Infosys,5.8,Placed,2025,123
+8,23CS008,Sai,AIDS,8.4,Accenture,5.5,Placed,2025,123
+9,23CS009,Harsha,CSE,7.2,None,0,Not Placed,2025,123
+10,23CS010,Rohit,IT,8.1,Wipro,4.0,Placed,2025,123
+11,23CS011,Deepika,CSE,9.3,Amazon,12.0,Placed,2025,123
+12,23CS012,Nikhil,ECE,8.8,Cognizant,4.8,Placed,2025,123
+13,23CS013,Keerthi,AIDS,8.7,Infosys,5.5,Placed,2025,123
+14,23CS014,Arjun,CSE,7.5,None,0,Not Placed,2025,123
+15,23CS015,Sneha,IT,8.9,Capgemini,5.2,Placed,2025,123
+16,23CS016,Varun,CSE,8.3,TCS,4.5,Placed,2025,123
+17,23CS017,Pooja,ECE,9.0,Accenture,6.2,Placed,2025,123
+18,23CS018,Akash,AIDS,7.8,Wipro,3.8,Placed,2025,123
+19,23CS019,Divya,CSE,9.4,Microsoft,18.0,Placed,2025,123
+20,23CS020,Karthik,IT,8.5,Infosys,5.0,Placed,2025,123
+21,23CS021,Meghana,CSE,8.8,TCS,4.5,Placed,2025,123
+22,23CS022,Rakesh,ECE,7.9,None,0,Not Placed,2025,123
+23,23CS023,Swathi,AIDS,9.2,Amazon,10.0,Placed,2025,123
+24,23CS024,Vivek,CSE,8.4,Cognizant,4.8,Placed,2025,123
+25,23CS025,Nandini,IT,8.7,Capgemini,5.3,Placed,2025,123
+26,23CS026,Manoj,CSE,7.6,Wipro,3.6,Placed,2025,123
+27,23CS027,Lakshmi,ECE,8.9,Infosys,6.0,Placed,2025,123
+28,23CS028,Sandeep,AIDS,8.1,TCS,4.2,Placed,2025,123
+29,23CS029,Bhavana,CSE,9.5,Google,20.0,Placed,2025,123
+30,23CS030,Yash,IT,7.4,None,0,Not Placed,2025,123
+31,23ME031,Rahul,MECH,7.8,Wipro,3.8,Placed,2025,123
+32,23IT032,Anjali,IT,8.7,Capgemini,4.2,Placed,2025,123
+33,23EE033,Kiran,EEE,8.4,TCS,4.5,Placed,2025,123
+34,23CV034,Priya,CIVIL,8.0,L&T,4.8,Placed,2025,123
+35,23AI035,Sai,AIML,9.2,Amazon,12.0,Placed,2025,123
+36,23CB001,Harsha,CSBS,8.6,Deloitte,6.0,Placed,2025,123
+37,23MB001,Rohit,MBA,8.1,HDFC Bank,5.5,Placed,2025,123
+38,23CS002,Deepika,CSE,9.3,Microsoft,18.0,Placed,2025,123
+39,23EC002,Nikhil,ECE,8.8,Cognizant,4.8,Placed,2025,123
+40,23AD002,Keerthi,AIDS,8.7,Infosys,5.5,Placed,2025,123
+41,23ME002,Arjun,MECH,7.2,None,0,Not Placed,2025,123
+42,23IT002,Sneha,IT,8.9,Capgemini,5.2,Placed,2025,123
+43,23EE002,Varun,EEE,8.3,TCS,4.5,Placed,2025,123
+44,23CV002,Pooja,CIVIL,8.5,L&T,5.0,Placed,2025,123
+45,23AI002,Akash,AIML,9.0,Google,20.0,Placed,2025,123
+46,23CB002,Divya,CSBS,8.8,Deloitte,6.5,Placed,2025,123
+47,23MB002,Karthik,MBA,8.2,ICICI Bank,5.0,Placed,2025,123
+48,23CS003,Meghana,CSE,8.8,TCS,4.5,Placed,2025,123
+49,23EC003,Rakesh,ECE,7.9,None,0,Not Placed,2025,123
+50,23AD003,Swathi,AIDS,9.2,Amazon,10.0,Placed,2025,123
+51,23ME003,Vivek,MECH,8.1,Bosch,5.2,Placed,2025,123
+52,23IT003,Nandini,IT,8.7,Infosys,5.3,Placed,2025,123
+53,23EE003,Manoj,EEE,7.8,Siemens,4.6,Placed,2025,123
+54,23CV003,Lakshmi,CIVIL,8.9,L&T,5.5,Placed,2025,123
+55,23AI003,Sandeep,AIML,8.5,Accenture,6.2,Placed,2025,123
+56,23CB003,Bhavana,CSBS,9.1,IBM,8.0,Placed,2025,123
+57,23MB003,Yash,MBA,7.5,None,0,Not Placed,2025,123
+58,23CS058,Akhil,CSE,8.7,TCS,4.5,Placed,2025,123
+59,23EC059,Sravani,ECE,8.4,Infosys,5.2,Placed,2025,123
+60,23AD060,Ramya,AIDS,9.0,Accenture,6.5,Placed,2025,123
+61,23ME061,Kishore,MECH,7.9,Wipro,3.8,Placed,2025,123
+62,23IT062,Pavani,IT,8.6,Capgemini,4.2,Placed,2025,123
+63,23EE063,Naveen,EEE,8.2,Siemens,4.8,Placed,2025,123
+64,23CV064,Anusha,CIVIL,8.1,L&T,5.0,Placed,2025,123
+65,23AI065,Teja,AIML,9.3,Amazon,12.0,Placed,2025,123
+66,23CB066,Harini,CSBS,8.8,Deloitte,6.0,Placed,2025,123
+67,23MB067,Karthik,MBA,8.0,HDFC Bank,5.5,Placed,2025,123
+68,23CS068,Pradeep,CSE,9.1,Microsoft,18.0,Placed,2025,123
+69,23EC069,Sindhu,ECE,8.5,Cognizant,4.8,Placed,2025,123
+70,23AD070,Madhu,AIDS,8.9,Infosys,5.5,Placed,2025,123
+71,23ME071,Rakesh,MECH,7.4,None,0,Not Placed,2025,123
+72,23IT072,Sowmya,IT,8.7,Capgemini,5.2,Placed,2025,123
+73,23EE073,Charan,EEE,8.3,TCS,4.5,Placed,2025,123
+74,23CV074,Bhargavi,CIVIL,8.6,L&T,5.0,Placed,2025,123
+75,23AI075,Vamshi,AIML,9.4,Google,20.0,Placed,2025,123
+76,23CB076,Keerthana,CSBS,8.9,IBM,8.0,Placed,2025,123
+77,23MB077,Rohini,MBA,8.1,ICICI Bank,5.0,Placed,2025,123
+78,23CS078,Abhinav,CSE,8.8,TCS,4.5,Placed,2025,123
+79,23EC079,Manasa,ECE,7.8,None,0,Not Placed,2025,123
+80,23AD080,Niharika,AIDS,9.2,Amazon,10.0,Placed,2025,123
