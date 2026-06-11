@@ -1,11 +1,18 @@
 import streamlit as st
 import pandas as pd
 import plotly.express as px
+import plotly.graph_objects as go
 
-# Load Data
+# ------------------------------
+# Load Dataset
+# ------------------------------
+
 df = pd.read_csv("placements.csv")
 
+# ------------------------------
 # Session State
+# ------------------------------
+
 if "logged_in" not in st.session_state:
     st.session_state.logged_in = False
 
@@ -15,7 +22,10 @@ if "role" not in st.session_state:
 if "student" not in st.session_state:
     st.session_state.student = None
 
+# ------------------------------
 # LOGIN PAGE
+# ------------------------------
+
 if not st.session_state.logged_in:
 
     st.title("🎓 College Placement Analytics System")
@@ -25,7 +35,10 @@ if not st.session_state.logged_in:
         ["Student", "Admin"]
     )
 
-    # STUDENT LOGIN
+    # --------------------------
+    # Student Login
+    # --------------------------
+
     if login_type == "Student":
 
         roll_no = st.text_input("Roll Number")
@@ -38,8 +51,9 @@ if not st.session_state.logged_in:
         if st.button("Student Login"):
 
             student = df[
-                (df["roll_no"] == roll_no)
-                & (df["password"].astype(str) == password)
+                (df["roll_no"].astype(str) == roll_no)
+                &
+                (df["password"].astype(str) == password)
             ]
 
             if len(student) > 0:
@@ -53,7 +67,10 @@ if not st.session_state.logged_in:
             else:
                 st.error("Invalid Credentials")
 
-    # ADMIN LOGIN
+    # --------------------------
+    # Admin Login
+    # --------------------------
+
     else:
 
         username = st.text_input("Admin Username")
@@ -77,8 +94,11 @@ if not st.session_state.logged_in:
 
     st.stop()
 
-# LOGOUT
-st.sidebar.success("Logged In")
+# ------------------------------
+# Sidebar
+# ------------------------------
+
+st.sidebar.title("Navigation")
 
 if st.sidebar.button("Logout"):
 
@@ -88,7 +108,10 @@ if st.sidebar.button("Logout"):
 
     st.rerun()
 
+# ======================================================
 # STUDENT DASHBOARD
+# ======================================================
+
 if st.session_state.role == "student":
 
     student = st.session_state.student
@@ -100,29 +123,119 @@ if st.session_state.role == "student":
     col1, col2 = st.columns(2)
 
     with col1:
-        st.write("Name:", student["student_name"])
-        st.write("Roll No:", student["roll_no"])
-        st.write("Department:", student["department"])
+        st.write("### Name:", student["student_name"])
+        st.write("### Roll No:", student["roll_no"])
+        st.write("### Department:", student["department"])
 
     with col2:
-        st.write("CGPA:", student["cgpa"])
-        st.write("Company:", student["company_name"])
-        st.write("Package:", student["package_lpa"])
+        st.write("### CGPA:", student["cgpa"])
+        st.write("### Company:", student["company_name"])
+        st.write("### Package:", student["package_lpa"], "LPA")
 
+    st.markdown("---")
+
+    # CGPA Gauge
+
+    st.subheader("CGPA Performance")
+
+    fig = go.Figure(go.Indicator(
+        mode="gauge+number",
+        value=float(student["cgpa"]),
+        title={'text': "CGPA"},
+        gauge={
+            'axis': {'range': [0, 10]}
+        }
+    ))
+
+    st.plotly_chart(fig, use_container_width=True)
+
+    # Student vs Average
+
+    st.subheader("Student vs College Average")
+
+    avg_cgpa = df["cgpa"].mean()
+
+    compare_df = pd.DataFrame({
+        "Category": [
+            "Student CGPA",
+            "College Average"
+        ],
+        "CGPA": [
+            student["cgpa"],
+            avg_cgpa
+        ]
+    })
+
+    fig = px.bar(
+        compare_df,
+        x="Category",
+        y="CGPA",
+        title="CGPA Comparison"
+    )
+
+    st.plotly_chart(fig, use_container_width=True)
+
+    # Placement Status Pie Chart
+
+    st.subheader("Placement Statistics")
+
+    status = (
+        df["placement_status"]
+        .value_counts()
+        .reset_index()
+    )
+
+    status.columns = [
+        "Status",
+        "Count"
+    ]
+
+    fig = px.pie(
+        status,
+        names="Status",
+        values="Count",
+        title="Placed vs Not Placed"
+    )
+
+    st.plotly_chart(fig, use_container_width=True)
+
+    # Department Average Package
+
+    st.subheader("Department Average Package")
+
+    dept_package = (
+        df.groupby("department")["package_lpa"]
+        .mean()
+        .reset_index()
+    )
+
+    fig = px.bar(
+        dept_package,
+        x="department",
+        y="package_lpa",
+        title="Average Package by Department"
+    )
+
+    st.plotly_chart(fig, use_container_width=True)
+
+# ======================================================
 # ADMIN DASHBOARD
+# ======================================================
+
 if st.session_state.role == "admin":
 
     st.title("📊 Admin Dashboard")
 
-    # KPIs
     total_students = len(df)
 
     placed_students = len(
-        df[df["placement_status"] == "Placed"]
+        df[
+            df["placement_status"] == "Placed"
+        ]
     )
 
     placement_percentage = round(
-        placed_students / total_students * 100,
+        (placed_students / total_students) * 100,
         2
     )
 
@@ -131,30 +244,32 @@ if st.session_state.role == "admin":
         2
     )
 
-    highest_package = df["package_lpa"].max()
+    col1, col2, col3, col4 = st.columns(4)
 
-    c1, c2, c3, c4 = st.columns(4)
+    col1.metric(
+        "Total Students",
+        total_students
+    )
 
-    c1.metric("Total Students", total_students)
-
-    c2.metric(
+    col2.metric(
         "Placed Students",
         placed_students
     )
 
-    c3.metric(
+    col3.metric(
         "Placement %",
-        f"{placement_percentage}%"
+        placement_percentage
     )
 
-    c4.metric(
-        "Highest Package",
-        highest_package
+    col4.metric(
+        "Avg Package",
+        avg_package
     )
 
     st.markdown("---")
 
     # Search Student
+
     st.subheader("Search Student")
 
     search = st.text_input(
@@ -165,34 +280,36 @@ if st.session_state.role == "admin":
 
         result = df[
             df["roll_no"]
-            .str.contains(search, case=False)
+            .astype(str)
+            .str.contains(search)
         ]
 
         st.dataframe(result)
 
     # Department Filter
+
     st.subheader("Department Filter")
 
     dept = st.selectbox(
-        "Department",
+        "Select Department",
         ["All"] +
         list(df["department"].unique())
     )
 
-    if dept != "All":
-
+    if dept == "All":
+        filtered = df
+    else:
         filtered = df[
             df["department"] == dept
         ]
 
-    else:
-
-        filtered = df
-
     st.dataframe(filtered)
 
     # Download Report
-    csv = filtered.to_csv(index=False)
+
+    csv = filtered.to_csv(
+        index=False
+    )
 
     st.download_button(
         "Download Report",
@@ -203,7 +320,8 @@ if st.session_state.role == "admin":
 
     st.markdown("---")
 
-    # Department-wise Chart
+    # Department-wise Students
+
     dept_chart = (
         df.groupby("department")
         .size()
@@ -217,9 +335,13 @@ if st.session_state.role == "admin":
         title="Department-wise Students"
     )
 
-    st.plotly_chart(fig1)
+    st.plotly_chart(
+        fig1,
+        use_container_width=True
+    )
 
-    # Placement Status Pie Chart
+    # Placement Pie Chart
+
     status = (
         df["placement_status"]
         .value_counts()
@@ -227,20 +349,24 @@ if st.session_state.role == "admin":
     )
 
     status.columns = [
-        "status",
-        "count"
+        "Status",
+        "Count"
     ]
 
     fig2 = px.pie(
         status,
-        names="status",
-        values="count",
+        names="Status",
+        values="Count",
         title="Placement Status"
     )
 
-    st.plotly_chart(fig2)
+    st.plotly_chart(
+        fig2,
+        use_container_width=True
+    )
 
-    # Company-wise Hiring
+    # Top Recruiters
+
     company = (
         df.groupby("company_name")
         .size()
@@ -254,4 +380,21 @@ if st.session_state.role == "admin":
         title="Top Recruiters"
     )
 
-    st.plotly_chart(fig3)
+    st.plotly_chart(
+        fig3,
+        use_container_width=True
+    )
+
+    # Highest Package
+
+    st.subheader("Highest Package Student")
+
+    highest = df.loc[
+        df["package_lpa"].idxmax()
+    ]
+
+    st.success(
+        f"{highest['student_name']} "
+        f"got {highest['package_lpa']} LPA "
+        f"in {highest['company_name']}"
+    )
